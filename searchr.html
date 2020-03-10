@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<h1>Sepsis Score Calculator</h1>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Sepsis Score Calculator</h1>
+    <a href="/">Back</a>
+    <table>
+        <tr>
+            <th>Patient ID</th>
+            <th>Data</th>
+            <th>Weight</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.patient_id }}</td> 
+                <td>{{ task.content }}</td> 
+                <td>{{ task.weight}}</td>
+                <td>{{ task.date_created}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <br>
+                    <a href="/results/{{task.id}}">Results</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}
